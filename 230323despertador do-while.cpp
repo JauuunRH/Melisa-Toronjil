@@ -7,9 +7,9 @@ cout << "Ingrese la hora inicial (formato hh:mm:ss): ";
 scanf("%d:%d:%d", &hh_inicial, &mm_inicial, &ss_inicial);
 
 
-    // Validar que la hora inicial ingresada sea válida
+    // Validar que la hora inicial ingresada sea vÃ¡lida
     if (hh_inicial < 0 || hh_inicial > 23 || mm_inicial < 0 || mm_inicial > 59 || ss_inicial < 0 || ss_inicial > 59) {
-cout << "La hora inicial ingresada no es válida." << endl;
+cout << "La hora inicial ingresada no es vÃ¡lida." << endl;
 return 0;
     }
 
@@ -19,9 +19,9 @@ cout << "Ingrese la hora final (formato hh:mm:ss): ";
 scanf("%d:%d:%d", &hh_final, &mm_final, &ss_final);
 
 
-    // Validar que la hora final ingresada sea válida
+    // Validar que la hora final ingresada sea vÃ¡lida
     if (hh_final < 0 || hh_final > 23 || mm_final < 0 || mm_final > 59 || ss_final < 0 || ss_final > 59) {
-cout << "La hora final ingresada no es válida." << endl;
+cout << "La hora final ingresada no es vÃ¡lida." << endl;
 return 0;
     }
 
@@ -34,7 +34,7 @@ printf("%02d:%02d:%02d\n", hh_inicial, mm_inicial, ss_inicial);
 
         // Verificar si es hora de despertar
 if (hh_inicial == hh_final && mm_inicial == mm_final && ss_inicial == ss_final) {
-cout << "¡WAKE UP!" << endl;
+cout << "Â¡WAKE UP!" << endl;
 break;
         }
 
