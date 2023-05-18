@@ -1,107 +1,50 @@
-#include <string>
 #include <iostream>
+#include <string>
+#include <windows.h>
 
 using namespace std;
 
-int CANT;
-float D1, D2, AUX1, AUX2;
+int venta;
 
 class Dulceria{
-string DIR;
-string NNEGOCIO;
+
+string DIREC, NNEGOCIO;
 
 public:
 
-Dulceria();
 Dulceria(string a, string b);
-void setDIR(string a);
+void setDIREC(string a);
 void setNNEGOCIO(string b);
 
-string getDIR();
+string getDIREC();
 string getNNEGOCIO();
 
-void Ganancias();
+void PRINTTIENDA();
 };
 
-Dulceria::Dulceria(){
-DIR="Ninguno";
-NNEGOCIO="Ninguno";
-}
-
 Dulceria::Dulceria(string a, string b){
-DIR=a;
+DIREC=a;
 NNEGOCIO=b;
 }
-void Dulceria::setDIR(string a){
-DIR=a;
+
+void Dulceria::setDIREC(string a){
+DIREC=a;
 }
 void Dulceria::setNNEGOCIO(string b){
 NNEGOCIO=b;
 }
-string Dulceria::getDIR(){
-return DIR;
+string Dulceria::getDIREC(){
+return DIREC;
 }
 string Dulceria::getNNEGOCIO(){
 return NNEGOCIO;
 }
 
-class Empleados{
-int COD, AGE;
-string NEMP, TURN;
-
-public:
-
-Empleados();
-Empleados(int c, int d, string e, string f);
-void setCOD(int c);
-void setAGE(int d);
-void setNEMP(string e);
-void setTURN(string f);
-
-int getCOD();
-int getAGE();
-string getNEMP();
-string getTURN();
-};
-
-Empleados::Empleados(){
-COD=00;
-AGE=00;
-NEMP="Ninguno";
-TURN="Ninguno";
-}
-
-Empleados::Empleados (int c, int d, string e, string f){
-COD=c;
-AGE=d;
-NEMP=e;
-TURN=f;
-}
-
-void Empleados::setCOD(int c){
-COD=c;
-}
-void Empleados::setAGE(int d){
-AGE=d;
-}
-void Empleados::setNEMP(string e){
-NEMP=e;
-}
-void Empleados::setTURN(string f){
-TURN=f;
-}
-
-int Empleados::getCOD(){
-return COD;
-}
-int Empleados::getAGE(){
-return AGE;
-}
-string Empleados::getNEMP(){
-return NEMP;
-}
-string Empleados::getTURN(){
-return TURN;
+void Dulceria::PRINTTIENDA(){
+cout<<"*******************************************************************"<<endl;
+cout<<"Bienvenido a "<<NNEGOCIO;
+cout<<" ubicada en "<<DIREC<<endl;
+cout<<"*******************************************************************"<<endl;
 }
 
 class Dulces{
@@ -112,39 +55,39 @@ float PRICE;
 
 public:
 
-Dulces (int g, int h, string i, float j);
-void setCDISP(int g);
-void setID(int h);
-void setNPROD(string i);
-void setPRICE(float j);
+Dulces (int h, int i, string j, float k);
+void setCDISP(int h);
+void setID(int i);
+void setNPROD(string j);
+void setPRICE(float k);
 
 int getCDISP();
 int getID();
 string getNPROD();
 float getPRICE();
 
-void VenderR();
-void VenderL();
+void VDISPONIBILIDAD();
+void IMPDULCE();
 };
 
-Dulces::Dulces(int g, int h, string i, float j){
-CDISP=g;
-ID=h;
-NPROD=i;
-PRICE=j;
+Dulces::Dulces(int c, int d, string e, float f){
+CDISP=c;
+ID=d;
+NPROD=e;
+PRICE=f;
 }
 
-void Dulces::setCDISP(int g){
-CDISP=g;
+void Dulces::setCDISP(int c){
+CDISP=c;
 }
-void Dulces::setID(int h){
-ID=h;
+void Dulces::setID(int d){
+ID=d;
 }
-void Dulces::setNPROD(string i){
-NPROD=i;
+void Dulces::setNPROD(string e){
+NPROD=e;
 }
-void Dulces::setPRICE(float j){
-PRICE=j;
+void Dulces::setPRICE(float f){
+PRICE=f;
 }
 
 int Dulces::getCDISP(){
@@ -160,195 +103,314 @@ float Dulces::getPRICE(){
 return PRICE;
 }
 
-void Dulceria::Ganancias(){
-cout<<"Ganancias de Rosa\n$"<<D1<<"\n\n";
-
-cout<<"Ganancias de Lorenzo\n$"<<D2<<"\n\n";
+void Dulces::IMPDULCE(){
+cout<<"ID: "<<getID()<<endl;
+cout<<"Nombre: "<<getNPROD()<<endl;
+cout<<"Precio: "<<getPRICE()<<endl;
+cout<<"Cantidad: "<<getCDISP()<<endl;
 }
 
-void Dulces::VenderR(){
-cout<<"Disponibilidad:"<<CDISP<<endl;
-cout<<"Cantidad a vender:\n$"<<PRICE<<endl;
-cin>>CANT;
-
-if (CANT<=CDISP)
-{
-CDISP=CDISP-CANT;
-AUX1=CANT*PRICE;
-D1=AUX1+D1;
+void Dulces::VDISPONIBILIDAD(){
+cout<<"Hay "<<getCDISP()<<" unidades de "<<getNPROD()<<endl;
 }
 
-else if(CANT>CDISP)
-{
-cout<<"No se cuenta con inventario.\n";
+class Empleado{
+
+int CODE, EDAD;
+string NEMP, TURNO;
+float VENTAS;
+
+public:
+Empleado(int c, int d, string e, string f, float g);
+void setCODE(int c);
+void setEDAD(int d);
+void setNEMP(string e);
+void setTURNO(string f);
+void setVENTAS(float g);
+
+int getCODE();
+int getEDAD();
+string getNEMP();
+string getTURNO();
+float getVENTAS();
+
+void IMPRIMEMPLEADO();
+void VENDER(Dulces &dulce);
+};
+
+Empleado::Empleado(int h, int i, string j, string k, float g){
+CODE= h;
+EDAD= i;
+NEMP= j;
+TURNO= k;
+VENTAS = 0;
 }
-        cout<<"Se ha ingresado: "<<AUX1<<endl;
-        cout<<"Gracias por su compra.\n";
+
+void Empleado::setVENTAS(float g){
+VENTAS= g;
+}
+void Empleado::setCODE(int h){
+CODE=h;
+}
+void Empleado::setEDAD(int i){
+EDAD=i;
+}
+void Empleado::setNEMP(string j){
+NEMP=j;
+}
+void Empleado::setTURNO(string k){
+TURNO=k;
 }
 
-void Dulces::VenderL(){
-cout<<"Cantidad Disponible:"<<CDISP<<endl;
-
-cout<<"Cantidad a vender:\n$"<<PRICE<<endl;
-cin>>CANT;
-
-if (CANT<=CDISP){
-
-CDISP=CDISP-CANT;
-
-AUX2=CANT*PRICE;
-D2=AUX2+D2;
+int Empleado::getCODE(){
+return CODE;
+}
+int Empleado::getEDAD(){
+return EDAD;
+}
+string Empleado::getNEMP(){
+return NEMP;
+}
+string Empleado::getTURNO(){
+return TURNO;
+}
+float Empleado::getVENTAS(){
+return VENTAS;
 }
 
-else if(CANT>CDISP){
-
-cout<<"Inventario Insuficiente.\n";
+void Empleado::IMPRIMEMPLEADO(){
+cout<<"Nombre: "<<getNEMP()<<endl;
+cout<<"Edad: "<<getEDAD()<<endl;
+cout<<"Codigo: "<<getCODE()<<endl;
+cout<<"Turno: "<<getTURNO()<<endl;
 }
 
-cout<<"Se ha ingresado $"<<AUX2<<endl;
-cout<<"Compra realizada, gracias!\n";
+void Empleado::VENDER(Dulces &dulce){
+
+int nuevaCantidad=dulce.getCDISP()-1;
+dulce.setCDISP(nuevaCantidad);
+
+float nuevasVentas=getVENTAS()+dulce.getPRICE();
+setVENTAS(nuevasVentas);
+}
+
+void M1(){
+cout<<"/n/nSeleccione usuario/n/n"<<endl<<endl;
+cout<<"1.- Administrador"<<endl;
+cout<<"2.- Empleado"<<endl;
+cout<<"3.- Salir"<<endl;
+}
+
+void M2(){
+cout<<"Desea Continuar"<<endl<<endl;
+cout<<"1.- chi"<<endl;
+cout<<"2.- no"<<endl;
+}
+
+void M3(){
+cout<<"Continuar como empleado?"<<endl<<endl;
+cout<<"1.- no"<<endl;
+cout<<"2.- si"<<endl;
 }
 
 int main(){
-system ("color e9");
-Dulceria Candy={Dulceria("Calle Venustiano Carranza", "Dulceria Candy")};
+Empleado Empleados[2]={
+Empleado(100, "Rosa Roja", 20, "Vendedor"),
+Empleado(200, "Lorenzo Choya", 22, "Vendedor")};
 
-Empleados Empleado[]=
-{Empleados (100, 20, "Rosa Roja", "Matutino"), Empleados (200, 22, "Lorenzo Choya", "Vespertino")};
+Dulces Dulce[5]={
+Dulces(501, "Mazapan", 30.60, 3),
+Dulces(502, "Skwinkles", 40.0, 4),
+Dulces(503, "Tutsi Pop", 38.5, 10),
+Dulces(504, "Galletas Animalitos", 60.0, 9),
+Dulces(505, "Chicle Bubaloo", 50.2, 8)};
 
-Dulces DCandy[]={
-Dulces   (10,503, "Tutsi Pop"         , 50.2),
-Dulces   (9,504, "Galletas Animalitos", 50.2),
-Dulces   (8,505, "Chicle Bubaloo"     , 50.2),
-Dulces   (4,502, "Skwinkles"          , 50.2),
-Dulces   (3,501, "Mazapan"            , 50.2)};
+int opc, opc1, n, ii, us, op2, fin, nven, nemp, jj, smenu, opc2, uss, opc3;
+smenu=0;
+fin=1;
+uss=0;
 
-int opc, i;
-char bck;
 do{
-cout<<".,,,*** /,,....@@.*  //( ,.,,,*** /,,....@@.*  //( ,.,,,*** /,,....@@.*  //( ,"<<endl;
-cout<<".,,,*** /,,....@@.*  //( ,"<<Candy.getNNEGOCIO()<<".,,,*** /,,....@@.*  //( ,*"<<endl;
-cout<<".,,,*** /,,....@@.*  //( ,.,,,*** /,,....@@.*  //( ,.,,,*** /,,....@@.*  //( ,"<<endl<<endl;
-
-cout<<"Ingresa"<<endl;
-cout<<"1:Administrador\n 2:Empleado\n 3:Cerrar\n";
-cin>>opc;
-
 system("cls");
-
-switch(opc)
-{
-case 1:
-cout<<"1:Ver informacion del empleado\n 2:Ver informacion del producto\n 3:Consultar inventario\n";
-cout<<"4:Consultar ganancias\n";
+if(smenu==0&&uss==0){
+menu();
 cin>>opc;
+}
 
-switch(opc)
+else if(uss==1){
+M3();
+cin>>opc3;
+if(opc3==1){
+M1();
+}
+
+else{
+opc=2;
+}
+}
+
+else{
+M2();
+cin>>opc2;
+if(opc2==1){
+opc=1;
+}else
+
 {
-case 1:
-cout<<"Selecciona el Empleado\n1:Lorenzo \n2:Roja\n"<<endl;
+system("cls");
+menu();
 cin>>opc;
-if (opc==1)
+}
+}
 
-cout<<"Nombre:"<<Empleados[0].getNEMP()<<"\nID:"<<Empleados[0].getCOD()<<endl;
-cout<<"Edad:"<<Empleados[0].getAGE()<<"\nTurno:"<<Empleados[0].getTURN();
+switch(opc){
 
-else if (opc==2)
-{
-cout<<"Nombre:"<<Empleados[0].getNEMP()<<"\nID:"<<Empleados[0].getCOD()<<endl;
-cout<<"Edad:"<<Empleados[0].getAGE()<<"\nTurno:"<<Empleados[0].getTURN();
-} break;
+case 1:
+system("cls");
+cout<<"Seleccione la opcion a realizar"<<endl<<endl;
+cout<<"1.- Ver informacion del empleado"<<endl;
+cout<<"2.- Ver informacion del producto"<<endl;
+cout<<"3.- Ver inventario"<<endl;
+cout<<"4.- Ver ganancias"<<endl;
+cin>>opc1;
+switch(opc1){
 
+case 1:
+system("cls");
+cout<<"Seleccione empleado"<<endl<<endl;
+cout<<"1.- Rosa Roja"<<endl;
+cout<<"2.- Lorenzo Choya"<<endl;
+cin>>n;
+n-=1;
+system("cls");
+Empleados[n].IMPRIMEMPLEADO();
+smenu++;
+system("Pause");
+
+break;
 
 case 2:
-cout<<"Selecciona el producto\n0:Mazapan \n1:Skwinkles \n2:Tutsi Pop \n3:Galleta de animalito \n4:Chicle Bubaloo\n";
-cin>>opc;
-if (opc==1)
-
-{
-cout<<"El producto es:\nID  Nombre\n\tPrecio\tCantidad"<<endl;
-cout<<DCandy[0].getID()<<" "<<DCandy[0].getNPROD()<<"\t"<<DCandy[0].getPRICE()<<"\t"<<DCandy[0].getCDISP()<<endl<<endl;
-}
-else if (opc==2)
-{
-cout<<"El producto es:\nID  Nombre\n\tPrecio\tCantidad"<<endl;
-cout<<DCandy[1].getID()<<" "<<DCandy[1].getNPROD()<<"\t"<<DCandy[1].getPRICE()<<"\t"<<DCandy[1].getCDISP()<<endl<<endl;
-}
-
-else if (opc==3)
-{
-cout<<"El producto es:\nID  Nombre\n\tPrecio\tCantidad"<<endl;
-cout<<DCandy[2].getID()<<" "<<DCandy[2].getNPROD()<<"\t"<<DCandy[2].getPRICE()<<"\t"<<DCandy[2].getCDISP()<<endl<<endl;
-}
-else if (opc==4)
-{
-cout<<"El producto es:\nID  Nombre\n\tPrecio\tCantidad"<<endl;
-cout<<DCandy[3].getID()<<" "<<DCandy[3].getNPROD()<<"\t"<<DCandy[3].getPRICE()<<"\t"<<DCandy[3].getCDISP()<<endl<<endl;
-}
-else if (opc==5)
-{
-cout<<"El producto es:\nID  Nombre\n\tPrecio\tCantidad"<<endl;
-cout<<DCandy[4].getID()<<" "<<DCandy[4].getNPROD()<<"\t"<<DCandy[4].getPRICE()<<"\t"<<DCandy[4].getCDISP()<<endl<<endl;
-}
+system("cls");
+cout<<"Seleccione el producto"<<endl<<endl;
+cout<<"1.- Mazapan"<<endl;
+cout<<"2.- Escuincles"<<endl;
+cout<<"3.- Paleta tucsi"<<endl;
+cout<<"4.- Galleta Animalito"<<endl;
+cout<<"5.- Bubaloo"<<endl;
+cin>>n;
+n-=1;
+Dulces[n].IMPDULCE();
+smenu++;
+system("Pause");
 break;
 
 case 3:
-cout<<"El inventario es:\nID  Nombre            \tPrecio\tCantidad"<<endl;
-cout<<DCandy[0].getID()<<" "<<DCandy[0].getNPROD()<<"\t"<<DCandy[0].getPRICE()<<"\t"<<DCandy[0].getCDISP()<<endl<<endl;
-cout<<DCandy[1].getID()<<" "<<DCandy[1].getNPROD()<<"\t"<<DCandy[1].getPRICE()<<"\t"<<DCandy[1].getCDISP()<<endl<<endl;
-cout<<DCandy[2].getID()<<" "<<DCandy[2].getNPROD()<<"\t"<<DCandy[2].getPRICE()<<"\t"<<DCandy[2].getCDISP()<<endl<<endl;
-cout<<DCandy[3].getID()<<" "<<DCandy[3].getNPROD()<<"\t"<<DCandy[3].getPRICE()<<"\t"<<DCandy[3].getCDISP()<<endl<<endl;
-cout<<DCandy[4].getID()<<" "<<DCandy[4].getNPROD()<<"\t"<<DCandy[4].getPRICE()<<"\t"<<DCandy[4].getCDISP()<<endl<<endl;
+system("cls");
+for(ii=0;ii<=4;ii++){
+Dulces[ii].IMPDULCE();
 }
+smenu++;
+system("Pause");
 break;
 
 case 4:
-cout<<"Ganancias\n";
-Candy.Ganancias();
-break;
-
-Default:
-cout<<"Opcion no valida";
-}break;
-
-case 2:
-cout<<"Usuario: \n1:Rosa Roja\n2 Lorenzo Choya\n";
-cin>>opc;
-
-if (opc==1){
 system("cls");
-cout<<"Selecciona una opcion.\n1:Ver informacion personal\n2:Ver informacion del producto\n3:Vender\n";
-cin>>opc;
-switch(opc)
-}
+cout<<"Seleccione empleado"<<endl<<endl;
+cout<<"1.- Rosa Roja"<<endl;
+cout<<"2.- Lorenzo Choya"<<endl;
+cin>>nemp;
+nemp-=1;
 
+cout<<"Viendo ganancias de "<<Empleados[nemp].getNEMP()<<endl;
+cout<<"Ganancias: "<<Empleados[nemp].getVENTAS()<<" pesos"<<endl;
+smenu++;
+system("Pause");
+break;
+
+default:
+system("cls");
+cout<<"Opcion invalida"<<endl;
+system("Pause");
+break;
+}
+break;
+
+case 2: system("cls");
+uss=1;
+cout<<"Seleccione empleado"<<endl;
+cout<<"1.- Rosa Roja"<<endl;
+cout<<"2.- Lorenzo Choya"<<endl;
+cin>>us;
+us-=1;
+system("cls");
+cout<<"Seleccione una opcion"<<endl;
+cout<<"1.- Ver informacion personal"<<endl;
+cout<<"2.- Ver informacion del producto"<<endl;
+cout<<"3.- Vender"<<endl;
+cin>>op2;
+
+switch(op2){
 case 1:
-cout<<"Nombre:"<<Empleados[0].getNombreEm()<<"\nID:"<<Empleados[0].getCodigo()<<endl;
-cout<<"Edad:"<<Empleados[0].getEdad()<<"\nTurno:"<<Empleados[0].getTurno();
+
+system("cls");
+Empleados[us].IMPRIMEMPLEADO();
+system("Pause");
 break;
 
 case 2:
-cout<<"Se muestra el inventario:\nID  Nombre            \tPrecio\tCantidad"<<endl;
-cout<<DCandy[0].getID()<<" "<<DCandy[0].getNPROD()<<"\t"<<DCandy[0].getPRICE()<<"\t"<<DCandy[0].getCDISP()<<endl<<endl;
-cout<<DCandy[1].getID()<<" "<<DCandy[1].getNPROD()<<"\t"<<DCandy[1].getPRICE()<<"\t"<<DCandy[1].getCDISP()<<endl<<endl;
-cout<<DCandy[2].getID()<<" "<<DCandy[2].getNPROD()<<"\t"<<DCandy[2].getPRICE()<<"\t"<<DCandy[2].getCDISP()<<endl<<endl;
-cout<<DCandy[3].getID()<<" "<<DCandy[3].getNPROD()<<"\t"<<DCandy[3].getPRICE()<<"\t"<<DCandy[3].getCDISP()<<endl<<endl;
-cout<<DCandy[4].getID()<<" "<<DCandy[4].getNPROD()<<"\t"<<DCandy[4].getPRICE()<<"\t"<<DCandy[4].getCDISP()<<endl<<endl;
+system("cls");
+for(ii=0;ii<=4;ii++){
+Dulces[ii].IMPDULCE();
+}
+system("Pause");
 break;
+
 case 3:
-cout<<"Dulce a vender? \n0:Mazapan \n1:Skwinkles \n2:Tutsi Pop \n3:Galleta de animalito \n4:Chicle Bubaloo\n";
-cin>>i;
-i=i;
-DCandy[i].VenderR();
+system("cls");
+cout<<"Seleccione el producto a vender"<<endl<<endl;
+cout<<"1.- Mazapan"<<endl;
+cout<<"2.- Escuincles"<<endl;
+cout<<"3.- Paleta tucsi"<<endl;
+cout<<"4.- Galleta Animalito"<<endl;
+cout<<"5.- Bubaloo"<<endl;
+cin>>venta;
+venta-=1;
+system("cls");
+cout<<"Ingrese el numero de unidades a vender"<<endl;
+cin>>nven;
+if(Dulces[venta].getCDISP()< nven){
+system("cls");
+
+cout<<"No es posible vender esa cantidad"<<endl;
+system("Pause");
+}
+else{
+
+system("cls");
+for(jj=1;jj<=nven;jj++){
+Empleados[us].Vender(Dulces[venta]);}
+cout<<"Has vendido: "<<Dulces[venta].getNPROD()<<endl;
+system("Pause");
+}
+break;
+
+default: cout<<"Opcion invalida"<<endl;
 break;
 }
-}
-else if(opc==2) //Lorenzo
 break;
-default: return 0;
+
+case 3: system("cls");
+cout<<"Saliendo..."<<endl;
+fin=2;
+break;
+
+default: system("cls");
+cout<<"Opcion invalida"<<endl;
+system("pause");
 }
-cout<<"\n\nPresiona 'b' para regresar a elegir usuario"<<endl;
-cin>>bck;
-system ("cls");
-    }while(bck=='s');
+
+
+}while(fin==1);
+
+return 0;
 }
